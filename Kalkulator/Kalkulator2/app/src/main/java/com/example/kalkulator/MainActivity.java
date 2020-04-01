@@ -35,6 +35,15 @@ public class MainActivity extends AppCompatActivity {
     TextView input;
     String process;
 
+    public void toastDlg()
+    {
+        Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.Error), Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+
+    }
+
+
 
 
 
@@ -77,20 +86,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
                 String str = input.getText().toString();
+
                 if (str.length() > 1) {
+
                     str = str.substring(0, str.length() - 1);
                     input.setText(str);
                 } else if (str.length() <= 1) {
@@ -229,15 +233,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 process = input.getText().toString();
                 double x, y;
-                if (process != "") {
-                    x = Double.parseDouble(process);
-                    y = 1 / x;
-                    process = String.valueOf(y);
-                } else
-                    input.setText("Error");
 
-                if (process != "") input.setText(process);
-                else input.setText("Error");
+                    try{
+                        x = Double.parseDouble(process);
+                        y = 1 / x;
+                        process = String.valueOf(y);
+                        if(process=="Infinity") {
+                            toastDlg();
+                        }
+                        else {
+                            input.setText(process);
+                        }
+                    }catch (Exception e)
+                    {
+                       toastDlg();
+                    }
+
 
             }
         });
@@ -254,15 +265,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 process = input.getText().toString();
                 double i;
-                i = Double.parseDouble(process);
 
 
-                if (i > 0) {
-                    input.setText("-" + process);
-                } else if (i < 0) {
-                    input.setText(process.replaceFirst("-", ""));
+                try {
+                    i = Double.parseDouble(process);
+                    if (i > 0) {
+                        input.setText("-" + process);
+                    } else if (i < 0) {
+                        input.setText(process.replaceFirst("-", ""));
+                    }
+                }catch (Exception e)
+                {
+                    toastDlg();
                 }
-
 
             }
         });
@@ -296,9 +311,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception ex) {
                     ex.printStackTrace();
                     input.setText("");
-                    Toast toast=Toast.makeText(getApplicationContext(),getString(R.string.Error),Toast.LENGTH_LONG);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
+                    toastDlg();
 
                 }
 
