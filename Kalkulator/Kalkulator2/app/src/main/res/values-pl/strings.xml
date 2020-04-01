@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kalkulator</string>
+    <string name="AboutText">Prosty kalkulator do wykonywania obliczeń</string>
+    <string name="About">O aplikacji</string>
+    <string name="Exit">Wyjdź</string>
+    <string name="Lang">Język</string>
+    <string name="Error">Błąd niepoprawne wyrażenie</string>
+    <string name="Backspace">Cofnij</string>
+    <string name="Clear">Wyczyść</string>
+
+</resources>
