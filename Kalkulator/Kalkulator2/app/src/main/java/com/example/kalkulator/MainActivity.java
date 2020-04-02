@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, b20, b21, b22;
-    TextView input;
+    private TextView input;
     String process;
 
     public void toastDlg()
@@ -42,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
 
     }
+
+    public void openDialog()
+    {
+       Dialog dialog = new Dialog();
+       dialog.show(getSupportFragmentManager(), "example dialog");
+
+
+    }
+
 
 
 
@@ -321,6 +330,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+
+    }
+
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString("key",input.getText().toString());
+        super.onSaveInstanceState(outState);
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        input.setText(savedInstanceState.getString("key"));
     }
 
     @Override
@@ -339,9 +362,7 @@ public class MainActivity extends AppCompatActivity {
                 System.exit(0);
                 break;
             case R.id.item1:
-                Toast toast=Toast.makeText(getApplicationContext(),getString(R.string.AboutText),Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
+                openDialog();
                 break;
             case R.id.item2:
                 showLangDialog();
@@ -395,8 +416,6 @@ public class MainActivity extends AppCompatActivity {
          String language = prefs.getString("My_Lang","");
          setLocale(language);
      }
-
-
 
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Calculator</string>
-    <string name="AboutText">Simple calculator to perform simple calculations</string>
+    <string name="AboutText">Authors:</string>
     <string name="About">About</string>
     <string name="Exit">Exit</string>
     <string name="Lang">Lang</string>

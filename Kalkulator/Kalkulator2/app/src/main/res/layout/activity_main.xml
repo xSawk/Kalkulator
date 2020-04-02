@@ -15,7 +15,7 @@
         android:id="@+id/tvExp"
         android:layout_width="match_parent"
         android:layout_height="150sp"
-        android:background="#42ABFF"
+        android:background="#669ECC"
         android:gravity="center"
         android:inputType="textMultiLine"
         android:maxLength="10"
@@ -56,6 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:soundEffectsEnabled="false"
             android:text="7"
             android:textSize="20sp" />
 
